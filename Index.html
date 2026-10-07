@@ -1,0 +1,873 @@
+<!DOCTYPE <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title> ouvre seulement mon site sans trop poser de question 😭 🤍</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+
+            font-family: Arial, sans-serif;
+            color: white;
+
+            background:
+                radial-gradient(circle at 20% 20%, #8d416022, transparent 30%),
+                radial-gradient(circle at 80% 80%, #7650a522, transparent 30%),
+                linear-gradient(135deg, #100b18, #211129, #0b0912);
+        }
+
+        .card {
+            width: 100%;
+            max-width: 430px;
+
+            padding: 35px 25px;
+
+            text-align: center;
+
+            border-radius: 28px;
+            border: 1px solid rgba(255,255,255,0.12);
+
+            background: rgba(255,255,255,0.07);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            box-shadow: 0 25px 70px rgba(0,0,0,0.45);
+        }
+
+        .lock {
+            width: 70px;
+            height: 70px;
+
+            margin: 0 auto 20px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border-radius: 50%;
+
+            font-size: 30px;
+
+            background: rgba(255,255,255,0.10);
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        h1 {
+            margin: 0 0 10px;
+            font-size: 27px;
+        }
+
+        .subtitle {
+            margin-bottom: 27px;
+
+            color: rgba(255,255,255,0.68);
+
+            line-height: 1.5;
+            font-size: 15px;
+        }
+
+        label {
+            display: block;
+
+            text-align: left;
+
+            margin: 0 0 9px 4px;
+
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+
+            padding: 16px;
+
+            border-radius: 15px;
+
+            border: 1px solid rgba(255,255,255,0.16);
+
+            outline: none;
+
+            background: rgba(0,0,0,0.22);
+
+            color: white;
+
+            font-size: 16px;
+
+            text-align: center;
+        }
+
+        input::placeholder {
+            color: rgba(255,255,255,0.45);
+        }
+
+        input:focus {
+            border-color: rgba(255,150,195,0.7);
+
+            box-shadow:
+                0 0 0 4px rgba(255,150,195,0.08);
+        }
+
+        button {
+            width: 100%;
+
+            margin-top: 13px;
+
+            padding: 16px;
+
+            border: none;
+            border-radius: 15px;
+
+            color: white;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            background: linear-gradient(
+                135deg,
+                #d85a91,
+                #9d63d8
+            );
+
+            box-shadow:
+                0 10px 25px rgba(170,70,140,0.25);
+
+            transition: 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        #error {
+            min-height: 23px;
+
+            margin-top: 13px;
+
+            color: #ff9ebf;
+
+            font-size: 14px;
+        }
+
+        /* MESSAGE SECRET */
+
+        .secret {
+            display: none;
+
+            animation: reveal 0.9s ease forwards;
+        }
+
+        .heart {
+            font-size: 42px;
+
+            margin-bottom: 10px;
+
+            animation: pulse 1.4s infinite;
+        }
+
+        .secret h2 {
+            margin-bottom: 17px;
+
+            font-size: 26px;
+        }
+
+        .message {
+            padding: 21px;
+
+            border-radius: 18px;
+
+            background: rgba(255,255,255,0.07);
+
+            border: 1px solid rgba(255,255,255,0.12);
+
+            color: rgba(255,255,255,0.92);
+
+            line-height: 1.75;
+
+            font-size: 16px;
+        }
+
+        .signature {
+            margin-top: 19px;
+
+            color: rgba(255,255,255,0.58);
+
+            font-size: 13px;
+        }
+
+        /* ANIMATIONS */
+
+        @keyframes reveal {
+
+            from {
+                opacity: 0;
+                transform: translateY(18px) scale(0.97);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes pulse {
+
+            50% {
+                transform: scale(1.12);
+            }
+        }
+
+        @keyframes shake {
+
+            25% {
+                transform: translateX(-7px);
+            }
+
+            50% {
+                transform: translateX(7px);
+            }
+
+            75% {
+                transform: translateX(-5px);
+            }
+        }
+
+        .shake {
+            animation: shake 0.38s ease;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="card" id="card">
+
+        <!-- ÉCRAN DE QUESTION -->
+
+        <section id="questionSection">
+
+            <div class="lock">
+                🔐
+            </div>
+
+            <h1>
+                Ouvre seulement mon site sans trop poser de questions😂…
+            </h1>
+
+            <p class="subtitle">
+                Il y a un message qui t’attend,
+                mais tu dois d’abord trouver la réponse. (ce n'est pas l'argent oh👀)
+            </p>
+
+            <label for="answer">
+                Quelle est ma date de naissance ?
+            </label>
+
+            <input
+                id="answer"
+                type="text"
+                placeholder="Ma soeur👀Tu as intérêt à trouver 🙂 ( et  n'oublie pas que je t'aime 🥲❤️)"
+                autocomplete="off"
+            >
+
+            <button onclick="checkAnswer()">
+                Déverrouiller 🔓
+            </button>
+
+            <p id="error"></p>
+
+        </section>
+
+
+        <!-- MESSAGE SECRET -->
+
+        <section class="secret" id="secret">
+
+            <div class="heart">
+                🤍
+            </div>
+
+            <h2>
+                bon si tu es arrivée jusqu'ici c'est que tu as bien trouvé .😂
+            </h2>
+
+            <div class="message">
+
+                Bon, je vais pas être très long .Je t’écris ce message c'est juste pour te demander de m’excuser parce que  depuis un moment je ne t’inclus
+                pas vraiment dans ma vie .Tout ce que je te dis
+                de personnel repose sur ma relation amoureuse.
+
+                <br><br>
+
+                Et je suis vraiment désolé pour ça.🤲🏾
+
+            </div>
+
+            <div class="signature">
+                Bon bah on se capte ...🙂 (et n'oublie pas que je t'aime 😂❤️)
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        /*
+         * On normalise la réponse afin d'accepter :
+         *
+         * 31 août 2006
+         * 31 aout 2006
+         * 31/08/2006
+         * 31-08-2006
+         * 31.08.2006
+         */
+
+        function normalizeDate(value) {
+
+            return value
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/\s+/g, " ")
+                .trim();
+
+        }
+
+
+        function checkAnswer() {
+
+            const input =
+                document.getElementById("answer");
+
+            const error =
+                document.getElementById("error");
+
+            const card =
+                document.getElementById("card");
+
+
+            const answer =
+                normalizeDate(input.value);
+
+
+            const correctAnswers = [
+
+                "31 août 2006",
+                "31 aout 2006",
+                "31/08/2006",
+                "31-08-2006",
+                "31.08.2006"
+
+            ];
+
+
+            /* SI LA RÉPONSE EST CORRECTE */
+
+            if (correctAnswers.includes(answer)) {
+
+                document
+                    .getElementById("questionSection")
+                    .style.display = "none";
+
+
+                document
+                    .getElementById("secret")
+                    .style.display = "block";
+
+
+                error.textContent = "";
+
+            }
+
+
+            /* SI LA RÉPONSE EST FAUSSE */
+
+            else {
+
+                error.textContent =
+                    "Hmm… mauvaise réponse 😏 Réfléchis encore.";
+
+
+                card.classList.remove("shake");
+
+                void card.offsetWidth;
+
+                card.classList.add("shake");
+
+                input.focus();
+
+            }
+
+        }
+
+
+        /* Permet d'appuyer sur Entrée */
+
+        document
+            .getElementById("answer")
+            .addEventListener("keydown", function(event) {
+
+                if (event.key === "Enter") {
+
+                    checkAnswer();
+
+                }
+
+            });
+
+    </script>
+
+</body>
+</html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title> ouvre seulement mon site sans trop poser de question 😭 🤍</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+
+            font-family: Arial, sans-serif;
+            color: white;
+
+            background:
+                radial-gradient(circle at 20% 20%, #8d416022, transparent 30%),
+                radial-gradient(circle at 80% 80%, #7650a522, transparent 30%),
+                linear-gradient(135deg, #100b18, #211129, #0b0912);
+        }
+
+        .card {
+            width: 100%;
+            max-width: 430px;
+
+            padding: 35px 25px;
+
+            text-align: center;
+
+            border-radius: 28px;
+            border: 1px solid rgba(255,255,255,0.12);
+
+            background: rgba(255,255,255,0.07);
+
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
+            box-shadow: 0 25px 70px rgba(0,0,0,0.45);
+        }
+
+        .lock {
+            width: 70px;
+            height: 70px;
+
+            margin: 0 auto 20px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            border-radius: 50%;
+
+            font-size: 30px;
+
+            background: rgba(255,255,255,0.10);
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+        h1 {
+            margin: 0 0 10px;
+            font-size: 27px;
+        }
+
+        .subtitle {
+            margin-bottom: 27px;
+
+            color: rgba(255,255,255,0.68);
+
+            line-height: 1.5;
+            font-size: 15px;
+        }
+
+        label {
+            display: block;
+
+            text-align: left;
+
+            margin: 0 0 9px 4px;
+
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+
+            padding: 16px;
+
+            border-radius: 15px;
+
+            border: 1px solid rgba(255,255,255,0.16);
+
+            outline: none;
+
+            background: rgba(0,0,0,0.22);
+
+            color: white;
+
+            font-size: 16px;
+
+            text-align: center;
+        }
+
+        input::placeholder {
+            color: rgba(255,255,255,0.45);
+        }
+
+        input:focus {
+            border-color: rgba(255,150,195,0.7);
+
+            box-shadow:
+                0 0 0 4px rgba(255,150,195,0.08);
+        }
+
+        button {
+            width: 100%;
+
+            margin-top: 13px;
+
+            padding: 16px;
+
+            border: none;
+            border-radius: 15px;
+
+            color: white;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            background: linear-gradient(
+                135deg,
+                #d85a91,
+                #9d63d8
+            );
+
+            box-shadow:
+                0 10px 25px rgba(170,70,140,0.25);
+
+            transition: 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        #error {
+            min-height: 23px;
+
+            margin-top: 13px;
+
+            color: #ff9ebf;
+
+            font-size: 14px;
+        }
+
+        /* MESSAGE SECRET */
+
+        .secret {
+            display: none;
+
+            animation: reveal 0.9s ease forwards;
+        }
+
+        .heart {
+            font-size: 42px;
+
+            margin-bottom: 10px;
+
+            animation: pulse 1.4s infinite;
+        }
+
+        .secret h2 {
+            margin-bottom: 17px;
+
+            font-size: 26px;
+        }
+
+        .message {
+            padding: 21px;
+
+            border-radius: 18px;
+
+            background: rgba(255,255,255,0.07);
+
+            border: 1px solid rgba(255,255,255,0.12);
+
+            color: rgba(255,255,255,0.92);
+
+            line-height: 1.75;
+
+            font-size: 16px;
+        }
+
+        .signature {
+            margin-top: 19px;
+
+            color: rgba(255,255,255,0.58);
+
+            font-size: 13px;
+        }
+
+        /* ANIMATIONS */
+
+        @keyframes reveal {
+
+            from {
+                opacity: 0;
+                transform: translateY(18px) scale(0.97);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes pulse {
+
+            50% {
+                transform: scale(1.12);
+            }
+        }
+
+        @keyframes shake {
+
+            25% {
+                transform: translateX(-7px);
+            }
+
+            50% {
+                transform: translateX(7px);
+            }
+
+            75% {
+                transform: translateX(-5px);
+            }
+        }
+
+        .shake {
+            animation: shake 0.38s ease;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="card" id="card">
+
+        <!-- ÉCRAN DE QUESTION -->
+
+        <section id="questionSection">
+
+            <div class="lock">
+                🔐
+            </div>
+
+            <h1>
+                Ouvre seulement mon site sans trop poser de questions😂…
+            </h1>
+
+            <p class="subtitle">
+                Il y a un message qui t’attend,
+                mais tu dois d’abord trouver la réponse. (ce n'est pas l'argent oh👀)
+            </p>
+
+            <label for="answer">
+                Quelle est ma date de naissance ?
+            </label>
+
+            <input
+                id="answer"
+                type="text"
+                placeholder="Ma soeur👀Tu as intérêt à trouver 🙂 ( et  n'oublie pas que je t'aime 🥲❤️)"
+                autocomplete="off"
+            >
+
+            <button onclick="checkAnswer()">
+                Déverrouiller 🔓
+            </button>
+
+            <p id="error"></p>
+
+        </section>
+
+
+        <!-- MESSAGE SECRET -->
+
+        <section class="secret" id="secret">
+
+            <div class="heart">
+                🤍
+            </div>
+
+            <h2>
+                bon si tu es arrivée jusqu'ici c'est que tu as bien trouvé .😂
+            </h2>
+
+            <div class="message">
+
+                Bon, je vais pas être très long .Je t’écris ce message c'est juste pour te demander de m’excuser parce que  depuis un moment je ne t’inclus
+                pas vraiment dans ma vie .Tout ce que je te dis
+                de personnel repose sur ma relation amoureuse.
+
+                <br><br>
+
+                Et je suis vraiment désolé pour ça.🤲🏾
+
+            </div>
+
+            <div class="signature">
+                Bon bah on se capte ...🙂 (et n'oublie pas que je t'aime 😂❤️)
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        /*
+         * On normalise la réponse afin d'accepter :
+         *
+         * 31 août 2006
+         * 31 aout 2006
+         * 31/08/2006
+         * 31-08-2006
+         * 31.08.2006
+         */
+
+        function normalizeDate(value) {
+
+            return value
+                .toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .replace(/\s+/g, " ")
+                .trim();
+
+        }
+
+
+        function checkAnswer() {
+
+            const input =
+                document.getElementById("answer");
+
+            const error =
+                document.getElementById("error");
+
+            const card =
+                document.getElementById("card");
+
+
+            const answer =
+                normalizeDate(input.value);
+
+
+            const correctAnswers = [
+
+                "31 août 2006",
+                "31 aout 2006",
+                "31/08/2006",
+                "31-08-2006",
+                "31.08.2006"
+
+            ];
+
+
+            /* SI LA RÉPONSE EST CORRECTE */
+
+            if (correctAnswers.includes(answer)) {
+
+                document
+                    .getElementById("questionSection")
+                    .style.display = "none";
+
+
+                document
+                    .getElementById("secret")
+                    .style.display = "block";
+
+
+                error.textContent = "";
+
+            }
+
+
+            /* SI LA RÉPONSE EST FAUSSE */
+
+            else {
+
+                error.textContent =
+                    "Hmm… mauvaise réponse 😏 Réfléchis encore.";
+
+
+                card.classList.remove("shake");
+
+                void card.offsetWidth;
+
+                card.classList.add("shake");
+
+                input.focus();
+
+            }
+
+        }
+
+
+        /* Permet d'appuyer sur Entrée */
+
+        document
+            .getElementById("answer")
+            .addEventListener("keydown", function(event) {
+
+                if (event.key === "Enter") {
+
+                    checkAnswer();
+
+                }
+
+            });
+
+    </script>
+
+</body>
+</html>
